@@ -44,6 +44,18 @@ class ConfigData:
         if self._check_file() is False:
             self._create_file()
 
-    def get_last_pos(self):
+    def get_last_pos_from_file(self):
         self.CONFIG.read(f"{BASE_DIR}/{self.CONNECTION_NAME}/work.cnf")
         return self.CONFIG.getint("SETTINGS", 'read_from')
+
+    def _set_value(self, name=None, value=None):
+        self.CONFIG.set("SETTINGS", name, value)
+        return None
+
+    def set_last_pos_to_file(self, name='read_from', val=None):
+        if val is None:
+            return None
+        self._set_value(name=name, value=str(val))
+        with open(f"{BASE_DIR}/{self.CONNECTION_NAME}/work.cnf", "w") as config_file:
+            self.CONFIG.write(config_file)
+

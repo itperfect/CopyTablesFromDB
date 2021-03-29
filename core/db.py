@@ -1,5 +1,5 @@
-from pymysql import connect
-from pymysql.cursors import Cursor, DictCursor
+from pymysql import connect, converters
+from pymysql.cursors import DictCursor
 
 
 class DB:
@@ -48,14 +48,15 @@ class DB:
         return self._cursor
 
     def execute(self, query=None):
-        self._last_query = query
+
+        self._last_query = converters.escape_str(query)
         try:
             self._cursor.execute(query=query)
         except Exception as e:
             print(f'Execution error: {e}')
             exit(0)
         else:
-            return True;
+            return True
 
     def commit(self):
         pass
@@ -63,3 +64,4 @@ class DB:
     def close(self):
         self._cursor.close()
         self._connection.close()
+
