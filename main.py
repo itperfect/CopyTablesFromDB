@@ -1,4 +1,5 @@
-from core import DB, ConfigData
+from core import DB, ConfigData, DataPD
+import io
 
 all_connections = []
 
@@ -48,7 +49,13 @@ for connection in all_connections:
                 f"{int(connection.conn_name[2::])}, {res['id']})"
 
         db_obj_result.execute(query=query)
-        print(query)
+        # print(query)
+
+        try:
+            pd_data_obj = DataPD(data=res['data'])
+            print(pd_data_obj.data_frame)
+        except Exception:
+            pass
 
     if isinstance(results, (tuple)):
         pass

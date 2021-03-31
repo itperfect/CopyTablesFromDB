@@ -1,3 +1,5 @@
 PyMySQL==1.0.2
 sqlescapy==1.0.1
 configparser==5.0.2
+
+pandas==1.2.3
