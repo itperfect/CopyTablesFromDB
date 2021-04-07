@@ -54,7 +54,7 @@ class DB:
             self._cursor.execute(query=query)
         except Exception as e:
             print(f'Execution error: {e}')
-            exit(0)
+            # exit(0)
         else:
             return True
 
