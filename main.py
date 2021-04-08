@@ -4,14 +4,26 @@ import io
 all_connections = []
 
 db_obj_result = DB(host='127.0.0.1', user='salkov', password="Artyom.salkov1", database="result", port='3306', conn_name='db_obj_result')
-print("db_obj_result")
-db2 = DB(host='127.0.0.1', user='completecase', password="fh47gTwdf#8@dfsg", database="completecase", port='3308', conn_name='db2')
-print("db2")
-db3 = DB(host='127.0.0.1', user='completecase', password="fh47gTwdf#8@dfsg", database="completecase", port='3309', conn_name='db3')
-print("db3")
 
-all_connections.append(db2)
-all_connections.append(db3)
+# from Staging
+# db2 = DB(host='127.0.0.1', user='completecase', password="fh47gTwdf#8@dfsg", database="completecase", port='3308', conn_name='db2')
+# all_connections.append(db2)
+
+# from Divorce online solutions
+# db3 = DB(host='127.0.0.1', user='completecase', password="fh47gTwdf#8@dfsg", database="completecase", port='3309', conn_name='db3')
+# all_connections.append(db3)
+
+# from DigitalOcean
+db4 = DB(host='127.0.0.1', user='salkov', password="Artyom.salkov1", database="DB_local", port='3306', conn_name='db4')
+all_connections.append(db4)
+
+# from Linode
+db5 = DB(host='127.0.0.1', user='salkov', password="Artyom.salkov1", database="DB_linode", port='3306', conn_name='db5')
+all_connections.append(db5)
+
+# from Completecase
+db6 = DB(host='127.0.0.1', user='salkov', password="Artyom.salkov1", database="DB_completecase", port='3306', conn_name='db6')
+all_connections.append(db6)
 
 # Copy reports
 for connection in all_connections:
